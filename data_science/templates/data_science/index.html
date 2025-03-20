@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exemplos de Algoritmos de Data Science</title>
+    <link rel="stylesheet" href="{% static '/styles/estilo.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Exemplos de Algoritmos de Data Science</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#regressao-linear">Regressão Linear</a></li>
+            <li><a href="#k-means">K-Means</a></li>
+            <li><a href="#classificacao">Classificação</a></li>
+            <li><a href="#arvore-decisoes">Árvore de Decisão</a></li>
+            <li><a href="#knn">KNN (K-Nearest Neighbors)</a></li>
+            <li><a href="#random-forest">Random Forest</a></li>
+        </ul>
+    </nav>
+
+    <section id="regressao-linear">
+        <h2>1. Regressão Linear</h2>
+        <p>A Regressão Linear é um modelo simples de aprendizado supervisionado usado para prever um valor contínuo com base em uma variável independente.</p>
+        <h3>Exemplo de código Python</h3>
+        <pre><code>from sklearn.linear_model import LinearRegression
+import numpy as np
+
+# Dados de exemplo
+X = np.array([[1], [2], [3], [4], [5]])
+y = np.array([1, 2, 3, 4, 5])
+
+# Modelo
+modelo = LinearRegression()
+modelo.fit(X, y)
+
+# Previsão
+print(modelo.predict([[6]]))  # Saída esperada: [6.0]</code></pre>
+        <p><a href="https://colab.research.google.com/drive/1Vq8J6Ed1lKMqQUxu5yKj7Kb5D6tvIQ4v?usp=sharing" target="_blank">Executar no Google Colab</a></p>
+    </section>
+
+    <section id="k-means">
+        <h2>2. K-Means</h2>
+        <p>O algoritmo K-Means é um algoritmo de agrupamento (clustering) que particiona dados em K clusters, minimizando a variação dentro de cada cluster.</p>
+        <h3>Exemplo de código Python</h3>
+        <pre><code>from sklearn.cluster import KMeans
+import numpy as np
+
+# Dados de exemplo
+X = np.array([[1, 2], [1.5, 1.8], [5, 8], [8, 8], [1, 0.6], [9, 11]])
+
+# Modelo
+kmeans = KMeans(n_clusters=2)
+kmeans.fit(X)
+
+# Previsão de clusters
+print(kmeans.predict([[0, 0], [12, 30]]))  # Saída: [0, 1]</code></pre>
+        <p><a href="https://colab.research.google.com/drive/1zH-KvnqX5qHRPz1qkd4RyzFk2ldmAl6m?usp=sharing" target="_blank">Executar no Google Colab</a></p>
+    </section>
+
+    <section id="classificacao">
+        <h2>3. Algoritmos de Classificação</h2>
+        <p>Os algoritmos de classificação são usados para prever uma categoria ou classe para dados de entrada. Um exemplo comum é o algoritmo de Classificação com o modelo de Árvore de Decisão.</p>
+        <h3>Exemplo de código Python (Árvore de Decisão)</h3>
+        <pre><code>from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+
+# Carregar o conjunto de dados Iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Modelo
+modelo = DecisionTreeClassifier()
+modelo.fit(X, y)
+
+# Previsão
+print(modelo.predict([[5.1, 3.5, 1.4, 0.2]]))  # Saída esperada: [0] (Classe da flor Iris-setosa)</code></pre>
+        <p><a href="https://colab.research.google.com/drive/1O4HF_e9ZT9HlgFvdeHcYspkCBhYkge6d?usp=sharing" target="_blank">Executar no Google Colab</a></p>
+    </section>
+
+    <section id="arvore-decisoes">
+        <h2>4. Árvore de Decisão</h2>
+        <p>A Árvore de Decisão é um modelo de aprendizado supervisionado usado tanto para problemas de classificação quanto de regressão.</p>
+        <h3>Exemplo de código Python</h3>
+        <pre><code>from sklearn.tree import DecisionTreeClassifier
+from sklearn.datasets import load_iris
+
+# Carregar o conjunto de dados Iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Modelo
+modelo = DecisionTreeClassifier()
+modelo.fit(X, y)
+
+# Previsão
+print(modelo.predict([[5.1, 3.5, 1.4, 0.2]]))  # Saída esperada: [0]</code></pre>
+        <p><a href="https://colab.research.google.com/drive/1D7K5yzHRo5RVROsl72XJjZ9H0A6gTjtb?usp=sharing" target="_blank">Executar no Google Colab</a></p>
+    </section>
+
+    <section id="knn">
+        <h2>5. KNN (K-Nearest Neighbors)</h2>
+        <p>O KNN é um algoritmo de aprendizado supervisionado usado tanto para classificação quanto para regressão, baseado na proximidade dos dados.</p>
+        <h3>Exemplo de código Python</h3>
+        <pre><code>from sklearn.neighbors import KNeighborsClassifier
+from sklearn.datasets import load_iris
+
+# Carregar o conjunto de dados Iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Modelo
+knn = KNeighborsClassifier(n_neighbors=3)
+knn.fit(X, y)
+
+# Previsão
+print(knn.predict([[5.1, 3.5, 1.4, 0.2]]))  # Saída esperada: [0]</code></pre>
+        <p><a href="https://colab.research.google.com/drive/1TxkWqFvFyNqnn53dAW3mRIIT0d2WQIiY?usp=sharing" target="_blank">Executar no Google Colab</a></p>
+    </section>
+
+    <section id="random-forest">
+        <h2>6. Random Forest</h2>
+        <p>O Random Forest é um algoritmo de aprendizado supervisionado que utiliza uma coleção de árvores de decisão, onde cada árvore realiza uma previsão e o modelo seleciona a previsão mais comum.</p>
+        <h3>Exemplo de código Python</h3>
+        <pre><code>from sklearn.ensemble import RandomForestClassifier
+from sklearn.datasets import load_iris
+
+# Carregar o conjunto de dados Iris
+iris = load_iris()
+X = iris.data
+y = iris.target
+
+# Modelo
+rf = RandomForestClassifier(n_estimators=100)
+rf.fit(X, y)
+
+# Previsão
+print(rf.predict([[5.1, 3.5, 1.4, 0.2]]))  # Saída esperada: [0]</code></pre>
+        <p><a href="https://colab.research.google.com/drive/1RNO7dK09PL5M9dGs3hN8Z7ghCZl9qb-J?usp=sharing" target="_blank">Executar no Google Colab</a></p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Exemplos de Algoritmos de Data Science</p>
+    </footer>
+</body>
+</html>
